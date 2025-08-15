@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FinAgent · 金融投研智能体</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <div class="brand-mark">FA</div>
+        <div class="brand-text">
+          <div class="brand-name">FinAgent</div>
+          <div class="brand-sub">金融投研与量化分析智能体</div>
+        </div>
+      </div>
+      <div class="status-chips" id="status-chips">
+        <span class="chip chip-loading">加载中…</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="layout">
+    <!-- 左侧：对话 -->
+    <section class="chat-panel">
+      <div class="chat-messages" id="chat-messages">
+        <div class="msg msg-assistant">
+          <div class="msg-avatar">FA</div>
+          <div class="msg-body">
+            <div class="msg-card">
+              <p>你好，我是 <strong>FinAgent</strong>，一个面向个人投资者的金融投研智能体。</p>
+              <p>我可以做这些事：</p>
+              <div class="li">金融知识问答（夏普比率、最大回撤、技术指标…）</div>
+              <div class="li">理财咨询与定投测算</div>
+              <div class="li">自然语言选股（样本池内因子筛选）</div>
+              <div class="li">个股技术面与量化因子分析</div>
+              <div class="li">量化策略回测与绩效解读</div>
+              <div class="compliance-warning">⚠️ 本平台内容仅供学习研究，不构成投资建议。市场有风险，投资需谨慎。</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="suggestions" id="suggestions">
+        <button class="suggestion-chip" data-q="什么是夏普比率？">什么是夏普比率？</button>
+        <button class="suggestion-chip" data-q="帮我筛选 3 只趋势强的股票">筛选趋势强的股票</button>
+        <button class="suggestion-chip" data-q="分析一下贵州茅台">分析贵州茅台</button>
+        <button class="suggestion-chip" data-q="我每月能存 3000 元，怎么理财？">每月存 3000 怎么理财</button>
+        <button class="suggestion-chip" data-q="你们的量化策略回测表现怎么样？">量化策略回测表现</button>
+      </div>
+
+      <form class="composer" id="chat-form">
+        <textarea id="chat-input" rows="1" placeholder="输入你的问题，回车发送（Shift+回车换行）"></textarea>
+        <button type="submit" class="send-btn" id="send-btn">发送</button>
+      </form>
+    </section>
+
+    <!-- 右侧：回测面板 + 标的池 -->
+    <aside class="side-panel">
+      <div class="side-card">
+        <div class="side-card-head">
+          <h2>量化策略回测</h2>
+          <button class="run-btn" id="run-backtest">运行回测</button>
+        </div>
+        <div class="side-card-body" id="backtest-body">
+          <p class="placeholder">点击「运行回测」，查看多因子趋势策略在样本池上的历史表现。</p>
+        </div>
+      </div>
+
+      <div class="side-card">
+        <div class="side-card-head"><h2>样本股票池</h2></div>
+        <div class="side-card-body" id="stock-list">
+          <p class="placeholder">加载中…</p>
+        </div>
+      </div>
+    </aside>
+  </main>
+
+  <footer class="footer">
+    FinAgent · 鲸兆量化实验室金融投研 Agent 演示 ｜ 数据来源：腾讯财经 / 东方财富公开接口 ｜
+    本平台所有内容由量化模型自动生成，仅供学习研究参考，不构成投资建议
+  </footer>
+
+  <script src="/app.js"></script>
+</body>
+</html>
